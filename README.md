@@ -24,3 +24,5 @@ This is the API for the mockout app.
 100. Remove `routes/user.js` from `app.js`
 
 110. Delete `routes/users.js`
+
+120. Start and test with `http GET http://localhost:8181/` to get payload `{ "hello": "world" }`
