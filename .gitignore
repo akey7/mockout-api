@@ -57,3 +57,12 @@ typings/
 # dotenv environment variables file
 .env
 
+# JetBrains stuff
+.idea
+
+# macOS junk
+.DS_Store
+
+# lockfiles which might cause heroku problems
+yarn.lock
+package-lock.json
