@@ -15,3 +15,4 @@ This is the API for the mockout app.
 
 60. `yarn add babel-cli babel-eslint babel-plugin-transform-async-to-generator babel-plugin-transform-class-properties babel-plugin-transform-es2015-modules-commonjs babel-plugin-transform-object-rest-spread eslint babel`
 
+70. Modify `bin/www` to use port 8181
