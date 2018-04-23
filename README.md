@@ -26,3 +26,20 @@ This is the API for the mockout app.
 110. Delete `routes/users.js`
 
 120. Start and test with `http GET http://localhost:8181/` to get payload `{ "hello": "world" }`
+
+130. Add CORS support in `app.js` thusly
+
+```javascript
+app.use('/', indexRouter)
+
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PATCH, DELETE')
+  next()
+})
+```
+
+140. `createdb mockoutdb`
+
+150. Create `knex.js`
