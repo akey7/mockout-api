@@ -155,3 +155,13 @@ Check the `todo` migration and seeds.
 This will ensure authorization is present.
 
 (280) Send a test token in a header
+
+```
+curl -X GET -H 'Authorization: Bearer XYZ' http://localhost:8181/todo
+```
+
+Where you substitute XYZ for a JWT issued by your server. You can get such a JWT by doing:
+
+``` 
+http POST http://127.0.0.1:8181/login username=hello@me.com password=letmein
+```
