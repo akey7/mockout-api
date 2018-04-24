@@ -17,6 +17,8 @@ This is the API for the mockout app.
 
 (65) `yarn add knex pg bcryptjs`
 
+I am using `bcryptjs` for the pure JS implementation of bcrypt
+
 (70) Modify `bin/www` to use port 8181
 
 (80) Modify `routes/index.js` to return only JSON and do linter compliance
@@ -81,11 +83,7 @@ knex migrate:make users
 
 (180) Create the `hashme.js` script.
 
-This script just exists to hash passwords with bcrypt for seeds.
-
-```javascript
-
-```
+This script just exists to hash passwords with bcrypt for seeds. Check the source for details.
 
 (190) Seed the `users` table
 
