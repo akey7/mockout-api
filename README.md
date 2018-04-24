@@ -145,3 +145,7 @@ heroku config:set JWT_SECRET=[YOUR JWT SECRET KEY]
 (RABBIT HOLE) Notice the `OPTIONS` request for CORS checks.
 
 (250) `git push heroku master`
+
+(260) Make the `todo` table
+
+Check the `todo` migration and seeds.
