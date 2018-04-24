@@ -15,7 +15,7 @@ This is the API for the mockout app.
 
 (60) `yarn add babel-cli babel-eslint babel-plugin-transform-async-to-generator babel-plugin-transform-class-properties babel-plugin-transform-es2015-modules-commonjs babel-plugin-transform-object-rest-spread eslint babel`
 
-(65) `yarn add knex pg`
+(65) `yarn add knex pg bcryptjs`
 
 (70) Modify `bin/www` to use port 8181
 
@@ -78,3 +78,16 @@ Also note that this file uses `knexfile.js` as its configuration.
 ```
 knex migrate:make users
 ```
+
+(180) Create the `hashme.js` script.
+
+This script just exists to hash passwords with bcrypt for seeds.
+
+```javascript
+
+```
+
+(190) Seed the `users` table
+
+Using the `hashme.js` script you created above, you can hash the password `letmein` to obtain
+
