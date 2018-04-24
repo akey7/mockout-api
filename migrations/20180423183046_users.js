@@ -3,7 +3,6 @@ exports.up = (knex, Promise) => (
     table.increments()
     table.varchar('username', 255)
     table.varchar('password', 255)
-    table.boolean('is_admin')
   })
 )
 
