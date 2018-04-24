@@ -111,3 +111,25 @@ http POST http://127.0.0.1:8181/login email=hello@me.com password=letmein
 ```
 
 If something appears in your node console log that says `Unhandled rejection Error: secretOrPrivateKey must have a value` then make sure you have the `JWT_SECRET` key in the `.env`
+
+(230) Heroku: `package.json` mods
+
+Add the Heroku scripts:
+
+```
+"heroku-postbuild": "knex migrate:rollback; knex migrate:latest; knex seed:run;"
+```
+
+```
+“start”: “node ./bin/www”
+```
+
+Add the node version into the `package.json`
+
+```
+"engines": {
+    "node": "v9.11.1"
+}
+```
+
+(240) Heroku: 
