@@ -11,4 +11,22 @@ router.get('/', (req, res, next) => {
     .then((result) => res.json(result))
 })
 
+router.get('/:id', (req, res, next) => {
+  const { userId } = req
+  const { id } = req.params
+
+  knex('todo')
+    .select('id', 'item')
+    .where('user_id', userId)
+    .andWhere('id', id)
+    .then((result) => {
+      if (result.length > 0) {
+        res.json(result)
+      }
+      else {
+        res.status(404).json({ error: `Item ${id} not found` })
+      }
+    })
+})
+
 module.exports = router
