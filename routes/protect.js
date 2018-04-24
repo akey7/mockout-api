@@ -18,6 +18,7 @@ function protect(req, res, next) {
       }
       else {
         req.username = decoded.username
+        req.userId = decoded.userId
         next()
       }
     })

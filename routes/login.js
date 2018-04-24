@@ -17,7 +17,7 @@ router.post('/', (req, res, next) => {
           res.status(400).send('Bad username')
         }
         else if (bcrypt.compareSync(password, result[0].password)) {
-          const payload = { username }
+          const payload = { username, userId: result[0].id }
           const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' })
           res.status(200).json({ token })
         }
