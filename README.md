@@ -139,6 +139,7 @@ heroku login
 heroku create mockout-api
 heroku addons:create heroku-postgresql
 heroku git:remote -a mockout-api
+heroku config:set JWT_SECRET=[YOUR JWT SECRET KEY]
 ```
 
 (250) `git push heroku master`
