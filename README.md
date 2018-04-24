@@ -149,3 +149,9 @@ heroku config:set JWT_SECRET=[YOUR JWT SECRET KEY]
 (260) Make the `todo` table
 
 Check the `todo` migration and seeds.
+
+(270) `routes/protect.js`
+
+This will ensure authorization is present.
+
+(280) Send a test token in a header
