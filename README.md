@@ -15,7 +15,7 @@ This is the API for the mockout app.
 
 (60) `yarn add babel-cli babel-eslint babel-plugin-transform-async-to-generator babel-plugin-transform-class-properties babel-plugin-transform-es2015-modules-commonjs babel-plugin-transform-object-rest-spread eslint babel`
 
-(65) `yarn add knex pg bcryptjs`
+(65) `yarn add knex pg bcryptjs jsonwebtowken dotenv`
 
 I am using `bcryptjs` for the pure JS implementation of bcrypt
 
@@ -87,5 +87,27 @@ This script just exists to hash passwords with bcrypt for seeds. Check the sourc
 
 (190) Seed the `users` table
 
-Using the `hashme.js` script you created above, you can hash the password `letmein` to obtain
+Using the `hashme.js` script you created above, you can hash the password `letmein` to obtain something to put into the seeds file. Check out the source code.
 
+(200) Create a shell script that can generate JWT keys:
+
+```
+#!/bin/bash
+node -e "require('crypto').randomBytes(48, (ex,buf) => console.log(buf.toString('hex')))"
+```
+
+It will make a key that is really long.
+
+(210) Create the `JWT_SECRET` in `.env`
+
+```
+JWT_SECRET=[YOUR JWT KEY]
+```
+
+(220) Test!
+
+``` 
+http POST http://127.0.0.1:8181/login email=hello@me.com password=letmein
+```
+
+If something appears in your node console log that says `Unhandled rejection Error: secretOrPrivateKey must have a value` then make sure you have the `JWT_SECRET` key in the `.env`
