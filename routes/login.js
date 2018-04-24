@@ -22,12 +22,12 @@ router.post('/', (req, res, next) => {
           res.status(200).json({ token })
         }
         else {
-          res.status(400).send('Bad password')
+          res.status(400).send({ error: 'Bad password' })
         }
       })
   }
   else {
-    res.status(400).send('Email and/or password was not sent')
+    res.status(400).send({ error: 'Email and/or password was not sent' })
   }
 })
 
