@@ -142,4 +142,6 @@ heroku git:remote -a mockout-api
 heroku config:set JWT_SECRET=[YOUR JWT SECRET KEY]
 ```
 
+(RABBIT HOLE) Notice the `OPTIONS` request for CORS checks.
+
 (250) `git push heroku master`
