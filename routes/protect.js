@@ -1,6 +1,9 @@
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
+// NOTE: THIS IS PRONE TO SESSION HIJACKING for the duration of the JWT
+// Ideally you would re-issue the key on each use.
+
 function protect(req, res, next) {
   const { authorization } = req.headers
 
