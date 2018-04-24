@@ -7,17 +7,17 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
 router.post('/', (req, res, next) => {
-  const { email, password } = req.body
+  const { username, password } = req.body
 
-  if (email && password) {
+  if (username && password) {
     knex('users')
-      .where('email', email)
+      .where('username', username)
       .then((result) => {
         if (result.length !== 1) {
-          res.status(400).send('Bad email')
+          res.status(400).send('Bad username')
         }
         else if (bcrypt.compareSync(password, result[0].password)) {
-          const payload = { email }
+          const payload = { username }
           const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' })
           res.status(200).json({ token })
         }
@@ -27,7 +27,7 @@ router.post('/', (req, res, next) => {
       })
   }
   else {
-    res.status(400).send({ error: 'Email and/or password was not sent' })
+    res.status(400).send({ error: 'username and/or password was not sent' })
   }
 })
 

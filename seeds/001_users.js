@@ -3,7 +3,7 @@ exports.seed = (knex, Promise) => (
     .then(() => (
       knex('users').insert([{
         id: 1,
-        email: 'hello@me.com',
+        username: 'hello@me.com',
         password: '$2a$10$REbk3qsthnNR8XGTeir1J.jdVOva3aURv3Um4MVqa6L8C2G3eHpg2',
         is_admin: true
       }])
