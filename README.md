@@ -165,3 +165,38 @@ Where you substitute XYZ for a JWT issued by your server. You can get such a JWT
 ``` 
 http POST http://127.0.0.1:8181/login username=hello@me.com password=letmein
 ```
+
+and grabbing the `token` property.
+
+TODO: use httpie or cURL consistently.
+
+(290) Create the `GET /todo` route
+
+(300) Create the `GET /todo/:id` route
+
+(310) Create the `POST /todo` route
+
+It will take a JSON body of the format:
+
+```json
+{
+  "item": "[YOUR TODO ITEM HERE]"
+}
+```
+
+It will return the format of:
+
+```json
+{
+  "item": "[YOUR TODO ITEM HERE]",
+  "id": 111
+}
+```
+
+Or whatever your `id` is as assigned by PostgreSQL.
+
+(320) Test the `POST /todo` route
+
+``` 
+curl -X GET -H 'Authorization: Bearer XYZ' http://localhost:8181/todo
+```

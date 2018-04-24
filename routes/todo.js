@@ -29,4 +29,14 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
+router.post('/', (req, res, next) => {
+  const { userId } = req
+  const { item } = req.body
+
+  knex('todo')
+    .insert({ item, user_id: userId })
+    .returning('*')
+    .then((result) => res.send(result))
+})
+
 module.exports = router
