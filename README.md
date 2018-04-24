@@ -132,4 +132,13 @@ Add the node version into the `package.json`
 }
 ```
 
-(240) Heroku: 
+(240) Heroku: The commands
+
+```
+heroku login
+heroku create mockout-api
+heroku addons:create heroku-postgresql
+heroku git:remote -a mockout-api
+```
+
+(250) `git push heroku master`
