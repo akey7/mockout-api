@@ -55,4 +55,22 @@ router.patch('/:id', (req, res, next) => {
     .then((result) => res.json(result))
 })
 
+// DELETE an existing item
+router.delete('/:id', (req, res, next) => {
+  const { userId } = req
+  const { id } = req.params
+
+  knex('todo')
+    .del()
+    .where('id', id)
+    .then((result) => {
+      if (result === 1) {
+        res.sendStatus(200)
+      }
+      else {
+        res.sendStatus(404)
+      }
+    })
+})
+
 module.exports = router
