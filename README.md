@@ -208,3 +208,9 @@ Or whatever your `id` is as assigned by PostgreSQL.
 ``` 
 curl -X GET -H 'Authorization: Bearer XYZ' http://localhost:8181/todo
 ```
+
+# Pro tips!
+
+Things I found after facepalming too many times.
+
+If you get the error `Unhandled rejection Error: secretOrPrivateKey must have a value` then check to make sure you have a `JWT_SECRET` in your `.env` file.

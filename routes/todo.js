@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const knex = require('../knex')
 
-// By the time the request gets here, we can trust the username
+// READ / LIST all todos of a given userId
 router.get('/', (req, res, next) => {
   const { userId } = req
   knex('todo')
@@ -11,6 +11,7 @@ router.get('/', (req, res, next) => {
     .then((result) => res.json(result))
 })
 
+// READ a particular todoid but only if it is from the user in the JWT token.
 router.get('/:id', (req, res, next) => {
   const { userId } = req
   const { id } = req.params
@@ -29,6 +30,7 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
+// CREATE a new item
 router.post('/', (req, res, next) => {
   const { userId } = req
   const { item } = req.body
@@ -37,6 +39,20 @@ router.post('/', (req, res, next) => {
     .insert({ item, user_id: userId })
     .returning('*')
     .then((result) => res.send(result))
+})
+
+// UPDATE an existing item
+router.patch('/:id', (req, res, next) => {
+  const { userId } = req
+  const { id } = req.params
+  const { item } = req.body
+
+  knex('todo')
+    .update({ item })
+    .where('id', id)
+    .andWhere('user_id', userId)
+    .returning('*')
+    .then((result) => res.json(result))
 })
 
 module.exports = router
