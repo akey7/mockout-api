@@ -206,7 +206,25 @@ Or whatever your `id` is as assigned by PostgreSQL.
 (320) Test the `POST /todo` route
 
 ``` 
-curl -X GET -H 'Authorization: Bearer XYZ' http://localhost:8181/todo
+curl -X POST -H 'Authorization: Bearer XYZ' -H 'Content-Type: application/json' -d '{ "item": "Something" }' http://localhost:8181/todo
+```
+
+(of course the `-X POST` is optional with `-d` but I think it is a good reminder of what I am doing.)
+
+(330) Create the `PATCH /todo/:id` route
+
+(340) Test the `PATCH /todo/:id` route
+
+``` 
+curl -X PATCH -H 'Authorization: Bearer XYZ' -H 'Content-Type: application/json' -d '{ "item": "Something" }' http://localhost:8181/todo/:id
+```
+
+(350) Create the `DELETE /todo/:id` route
+
+(360) Test the `DELETE /todo/:id` route
+
+``` 
+curl -X DELETE -H 'Authorization: Bearer XYZ' -H 'Content-Type: application/json' http://localhost:8181/todo/:id
 ```
 
 # Pro tips!
