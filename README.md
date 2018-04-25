@@ -154,6 +154,14 @@ Check the `todo` migration and seeds.
 
 This will ensure authorization is present.
 
+A valid JWT must be send in the authorization header, like this:
+
+```
+Authorization: Bearer <token>
+```
+
+See [https://jwt.io/introduction/](https://jwt.io/introduction/)
+
 (280) Send a test token in a header
 
 ```
