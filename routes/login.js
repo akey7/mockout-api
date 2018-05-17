@@ -27,6 +27,8 @@ router.post('/', (req, res, next) => {
       })
   }
   else {
+    console.log(username)
+    console.log(password)
     res.status(400).send({ error: 'username and/or password was not sent' })
   }
 })

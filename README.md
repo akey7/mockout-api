@@ -54,7 +54,7 @@ module.exports = {
     client: 'pg',
     connection: 'postgres://localhost/mockoutdb'
   },
-  
+
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL
@@ -106,7 +106,7 @@ JWT_SECRET=[YOUR JWT KEY]
 
 (220) Test!
 
-``` 
+```
 http POST http://127.0.0.1:8181/login email=hello@me.com password=letmein
 ```
 
@@ -170,8 +170,8 @@ curl -X GET -H 'Authorization: Bearer XYZ' http://localhost:8181/todo
 
 Where you substitute XYZ for a JWT issued by your server. You can get such a JWT by doing:
 
-``` 
-http POST http://127.0.0.1:8181/login username=hello@me.com password=letmein
+```
+curl -X POST http://127.0.0.1:8181/login -H 'Content-Type: application/json' -d '{"username": "hello@me.com", "password": "letmein"}'
 ```
 
 and grabbing the `token` property.
@@ -205,7 +205,7 @@ Or whatever your `id` is as assigned by PostgreSQL.
 
 (320) Test the `POST /todo` route
 
-``` 
+```
 curl -X POST -H 'Authorization: Bearer XYZ' -H 'Content-Type: application/json' -d '{ "item": "Something" }' http://localhost:8181/todo
 ```
 
@@ -215,7 +215,7 @@ curl -X POST -H 'Authorization: Bearer XYZ' -H 'Content-Type: application/json' 
 
 (340) Test the `PATCH /todo/:id` route
 
-``` 
+```
 curl -X PATCH -H 'Authorization: Bearer XYZ' -H 'Content-Type: application/json' -d '{ "item": "Something" }' http://localhost:8181/todo/:id
 ```
 
@@ -223,7 +223,7 @@ curl -X PATCH -H 'Authorization: Bearer XYZ' -H 'Content-Type: application/json'
 
 (360) Test the `DELETE /todo/:id` route
 
-``` 
+```
 curl -X DELETE -H 'Authorization: Bearer XYZ' -H 'Content-Type: application/json' http://localhost:8181/todo/:id
 ```
 
