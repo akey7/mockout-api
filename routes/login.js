@@ -14,7 +14,7 @@ router.post('/', (req, res, next) => {
       .where('username', username)
       .then((result) => {
         if (result.length !== 1) {
-          res.status(400).send('Bad username')
+          res.status(400).send({ error: 'Bad username' })
         }
         else if (bcrypt.compareSync(password, result[0].password)) {
           const payload = { username, userId: result[0].id }
