@@ -180,7 +180,11 @@ TODO: use httpie or cURL consistently.
 
 (290) Create the `GET /todo` route
 
-(300) Create the `GET /todo/:id` route
+(300) Test the `GET /todo/:id` route
+
+```
+curl -X GET -H 'Authorization: Bearer XYZ' -H 'Content-Type: application/json' http://localhost:8181/todo
+```
 
 (310) Create the `POST /todo` route
 
