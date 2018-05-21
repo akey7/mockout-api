@@ -5,6 +5,8 @@ require('dotenv').config()
 // Ideally you would re-issue the key on each use.
 
 function protect(req, res, next) {
+  console.log(req.headers)
+
   const { authorization } = req.headers
 
   try {

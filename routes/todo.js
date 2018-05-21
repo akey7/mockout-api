@@ -4,6 +4,7 @@ const knex = require('../knex')
 
 // READ / LIST all todos of a given userId
 router.get('/', (req, res, next) => {
+  console.log(req.headers)
   const { userId } = req
   knex('todo')
     .select('id', 'item')
