@@ -8,7 +8,10 @@ router.get('/', (req, res, next) => {
   knex('todo')
     .select('id', 'item')
     .where('user_id', userId)
-    .then((result) => res.json(result))
+    .then((result) => {
+      console.log(result)
+      res.json(result)
+    })
 })
 
 // READ a particular todoid but only if it is from the user in the JWT token.
