@@ -9,8 +9,9 @@ router.get('/', (req, res, next) => {
     .select('id', 'item')
     .where('user_id', userId)
     .then((result) => {
-      console.log(result)
-      res.json(result)
+      const payload = { todos: result }
+      console.log(payload)
+      res.status(200).json(payload)
     })
 })
 
@@ -25,7 +26,7 @@ router.get('/:id', (req, res, next) => {
     .andWhere('id', id)
     .then((result) => {
       if (result.length > 0) {
-        res.json(result)
+        res.status(200).json({ todos: result })
       }
       else {
         res.status(404).json({ error: `Item ${id} not found` })
