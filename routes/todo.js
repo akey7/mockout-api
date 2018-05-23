@@ -57,12 +57,12 @@ router.patch('/:id', (req, res, next) => {
     .returning('*')
     .then(() => {
       knex('todo')
-      .select('id', 'item')
-      .where('user_id', userId)
-      .then((result) => {
-        const payload = { todos: result }
-        res.status(200).json(payload)
-      })
+        .select('id', 'item')
+        .where('user_id', userId)
+        .then((result) => {
+          const payload = { todos: result }
+          res.status(200).json(payload)
+        })
     })
 })
 
