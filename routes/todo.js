@@ -10,7 +10,6 @@ router.get('/', (req, res, next) => {
     .where('user_id', userId)
     .then((result) => {
       const payload = { todos: result }
-      console.log(payload)
       res.status(200).json(payload)
     })
 })
@@ -56,7 +55,15 @@ router.patch('/:id', (req, res, next) => {
     .where('id', id)
     .andWhere('user_id', userId)
     .returning('*')
-    .then((result) => res.json(result))
+    .then(() => {
+      knex('todo')
+      .select('id', 'item')
+      .where('user_id', userId)
+      .then((result) => {
+        const payload = { todos: result }
+        res.status(200).json(payload)
+      })
+    })
 })
 
 // DELETE an existing item
