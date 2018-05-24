@@ -41,7 +41,15 @@ router.post('/', (req, res, next) => {
   knex('todo')
     .insert({ item, user_id: userId })
     .returning('*')
-    .then((result) => res.send(result))
+    .then(() => {
+      knex('todo')
+        .select('id', 'item')
+        .where('user_id', userId)
+        .then((result) => {
+          const payload = { todos: result }
+          res.status(200).json(payload)
+        })
+    })
 })
 
 // UPDATE an existing item
