@@ -67,6 +67,7 @@ router.patch('/:id', (req, res, next) => {
 })
 
 // DELETE an existing item
+// Return everything so that the list may be synced.
 router.delete('/:id', (req, res, next) => {
   const { userId } = req
   const { id } = req.params
@@ -76,7 +77,13 @@ router.delete('/:id', (req, res, next) => {
     .where('id', id)
     .then((result) => {
       if (result === 1) {
-        res.sendStatus(200)
+        knex('todo')
+        .select('id', 'item')
+        .where('user_id', userId)
+        .then((result) => {
+          const payload = { todos: result }
+          res.status(200).json(payload)
+        })
       }
       else {
         res.sendStatus(404)
